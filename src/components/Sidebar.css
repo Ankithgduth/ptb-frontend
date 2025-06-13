@@ -1,0 +1,30 @@
+.sidebar {
+  background-color: #222;
+  color: gold;
+  height: 100vh;
+  width: 200px;
+  padding: 20px;
+  position: fixed;
+}
+
+.sidebar h2 {
+  color: white;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 15px 0;
+}
+
+.sidebar a {
+  color: gold;
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  color: white;
+}

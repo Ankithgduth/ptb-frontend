@@ -1,38 +1,40 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Sidebar from './components/Sidebar';
 import './App.css';
 
+function Dashboard() {
+  return <h2>📈 Live Trade View (Coming Soon)</h2>;
+}
+function PnL() {
+  return <h2>💰 P&L Report</h2>;
+}
+function ML() {
+  return <h2>🧠 ML Performance</h2>;
+}
+function Equity() {
+  return <h2>📊 Equity Engine</h2>;
+}
+function Settings() {
+  return <h2>⚙️ Settings</h2>;
+}
+
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [password, setPassword] = useState('');
-
-  const handleLogin = () => {
-    if (password === 'ptb2025') {
-      setIsLoggedIn(true);
-    } else {
-      alert('Incorrect password. Try again.');
-    }
-  };
-
-  if (!isLoggedIn) {
-    return (
-      <div className="login-page">
-        <h1>Login Page (password-based)</h1>
-        <input
-          type="password"
-          placeholder="Enter password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button onClick={handleLogin}>Login</button>
-      </div>
-    );
-  }
-
   return (
-    <div className="dashboard">
-      <h1>Welcome to PTB Dashboard</h1>
-      <p>This is a placeholder. Live trade view, ML metrics, and reports coming next.</p>
-    </div>
+    <Router>
+      <div style={{ display: 'flex' }}>
+        <Sidebar />
+        <div style={{ marginLeft: '220px', padding: '20px', color: 'white' }}>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/pnl" element={<PnL />} />
+            <Route path="/ml" element={<ML />} />
+            <Route path="/equity" element={<Equity />} />
+            <Route path="/settings" element={<Settings />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 
